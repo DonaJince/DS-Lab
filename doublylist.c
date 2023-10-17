@@ -172,15 +172,15 @@ void insert_pos()
 	int pos,i;
 	struct node*ptr,*temp;
 	ptr=(struct node*)malloc(sizeof(struct node*));
-	printf("\n enter value : ");
-	scanf("%d",&item);
-	ptr->data=item;
 	printf("\n enter position : ");
 	scanf("%d",&pos);
 	if(pos==1)
 		insert_begin();
 	else
 	{
+	   	printf("\n enter value : ");
+		scanf("%d",&item);
+		ptr->data=item;
 		temp=beg;
 		for(i=1;i<pos-1;i++)
 		{
