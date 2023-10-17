@@ -177,21 +177,26 @@ void insert_pos()
 	ptr->data=item;
 	printf("\n enter position : ");
 	scanf("%d",&pos);
-	temp=beg;
-	for(i=1;i<pos-1;i++)
+	if(pos==1)
+		insert_begin();
+	else
 	{
-		temp=temp->next;
-		if(temp==NULL)
+		temp=beg;
+		for(i=1;i<pos-1;i++)
 		{
-			printf("\n insertion not possible");
-			return;
+			temp=temp->next;
+			if(temp==NULL)
+			{
+				printf("\n insertion not possible");
+				return;
+			}
 		}
+		ptr->next=temp->next;
+		ptr->prev=temp;
+		temp->next->prev=ptr;
+		temp->next=ptr;
+		printf("\n node inserted \n");
 	}
-	ptr->next=temp->next;
-	ptr->prev=temp;
-	temp->next->prev=ptr;
-	temp->next=ptr;
-	printf("\n node inserted \n");
 }
 void delete_begin()
 {
@@ -263,7 +268,7 @@ void delete_pos()
 			}
 		}
 	ptr=temp->next;
-    ptr->next->prev=temp;
+        ptr->next->prev=temp;
 	temp->next=ptr->next;
 	free(ptr);
 	printf("\n node deleted ");
