@@ -12,7 +12,7 @@ int main()
 	int c;
 	while(1)
 	{
-	printf("1.insertion \n2.deletion\n3.traversal \n4.exit\n");
+	printf("\n1.insertion \n2.deletion\n3.traversal \n4.exit\n");
 		printf("enter your choice : ");
 		scanf("%d",&c);
 		switch(c)
@@ -88,20 +88,48 @@ void traversal()
 	}
 	else
 	{
-		printf("the list is\n");
-		if(rear>=front)
-		{
-			for(i=front;i<=rear;i++)
-			printf("%d\n",a[i]);
-		}
-		if(rear<front)
-		{
-			for(i=front;i<max;i++)
-			printf("%d\n",a[i]);
-			for(i=0;i<=rear;i++)
-			printf("%d\n",a[i]);	
-		}
+			if(front==0)
+			{
+				for(i=front;i<=rear;i++)
+				{
+					printf("\n%d",a[i]);	
+				}
+				for(i=rear+1;i<max;i++)
+				{
+					printf("\n-");	
+				}
+			}
+			if(front>rear)
+			{
+				for(i=0;i<=rear;i++)
+				{
+					printf("\n%d",a[i]);	
+				}
+				for(i=rear+1;i<front;i++)
+				{
+					printf("\n-");	
+				}
+					for(i=front;i<max;i++)
+				{
+					printf("\n%d",a[i]);	
+				}
+			}
+			if(rear>=front && front!=0)
+			{
+				for(i=0;i<front;i++)
+				{
+					printf("\n-");	
+				}
+				for(i=front;i<=rear;i++)
+				{
+					printf("\n%d",a[i]);	
+				}
+				for(i=rear+1;i<max;i++)
+				{
+					printf("\n-");	
+				}
+			}
 	}
+		
 }
-
 
