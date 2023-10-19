@@ -7,12 +7,13 @@ int a[10],i;
 void insertion();
 void deletion();
 void traversal();
+void search();
 int main()
 {
 	int c;
 	while(1)
 	{
-	printf("\n1.insertion \n2.deletion\n3.traversal \n4.exit\n");
+	printf("\n1.insertion \n2.deletion\n3.traversal \n4.search\n5.exit\n");
 		printf("enter your choice : ");
 		scanf("%d",&c);
 		switch(c)
@@ -27,6 +28,9 @@ int main()
 			traversal();
 			break;
 			case 4:
+			search();
+			break;
+			case 5:
 			return 0;
 
 			default:
@@ -132,5 +136,62 @@ void traversal()
 	}
 		
 }
-
-
+void search()
+{
+	int item,loc=-1;
+	if(front==-1)
+	{
+		printf("queue is empty\n");
+		return;
+	}
+	else
+	{
+		printf("enter the element to be searched:");
+		scanf("%d",&item);
+		if(front==0)
+		{
+			for(i=front;i<=rear;i++)
+			{
+				if(item==a[i])
+				{
+					loc=i;
+					break;	
+				}
+			}
+		}
+		if(front>rear)
+		{
+			for(i=0;i<=rear;i++)
+			{
+				if(item==a[i])
+				{
+					loc=i;
+					break;	
+				}
+			}
+			for(i=front;i<max;i++)
+			{
+				if(item==a[i])
+				{
+					loc=i;
+					break;	
+				}
+			}
+		}
+		if(rear>=front && front!=0)
+		{
+			for(i=front;i<=rear;i++)
+			{
+				if(item==a[i])
+				{
+					loc=i;
+					break;	
+				}
+			}
+		}
+		if(loc==-1)
+			printf("%d is not found\n",item);
+		else
+			printf("%d is found at index:%d\n",item,loc);
+	}
+}
