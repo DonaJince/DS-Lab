@@ -72,8 +72,8 @@ void binary()
 	read(n);
 	printf("enter the value to be searched:");
 	scanf("%d",&item);
-	low=0;
-	high=n-1;
+	low=1;
+	high=n;
 	while(low<=high)
 	{
 		mid=low+high/2;
