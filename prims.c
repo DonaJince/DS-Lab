@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
-int vertex[20],cost[20][20],n,t[20][20],mincost=0,near[10],edgecount=0;
+int vertex[20],cost[20][20],n,t[20][20],mincost=0,near[10],min[20][20];
 int main()
 {
-	int i,j,k=0,l=0;
+	int i,j,b,k=0,l=0;
 	
 	//count of vertices
 	printf("enter the number of vertices:");
@@ -17,41 +17,69 @@ int main()
 		scanf("%d",&vertex[i]);
 	}
 	//cost of all edges in the graph
-	for(i=0;i<=n;i++)
+	for(i=1;i<=n;i++)
 	{
 		for(j=i+1;j<=n;j++)
 		{
-			if(i+1!=j)
+			if(i!=j)
 			{
-				printf("enter the cost[%d][%d]||cost[%d][%d]:",vertex[i+1],vertex[j],vertex[j],vertex[i+1]);
-				scanf("%d",&cost[i+1][j]);
-				cost[j][i+1]=cost[i+1][j];
-				if(cost[i+1][j]!=0)
+				printf("enter the cost[%d][%d]||cost[%d][%d]:",vertex[i],vertex[j],vertex[j],vertex[i]);
+				scanf("%d",&cost[i][j]);
+				cost[j][i]=cost[i][j];
+			}
+		}
+	}
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=n;j++)
+		{
+				if(cost[i][j]!=0)                                  //ERROR
 				{
-					edgecount++;
-					if(cost[i+1][j]<=mincost)
+					if(cost[i][j]<=mincost)
 					{
-						k=i+1;
-						j=j;
-						mincost=cost[i+1][j];
-						t[1,1]=k;
-						t[1][2]=j;
+						k=i;
+						l=j;
+						mincost=cost[i][j];               //setting mincost
+						t[1][1]=k;                                              //minimum cost edge
+						t[1][2]=l;
+					}
+				}
+		}
+	}
+	mincost=cost[1][2];   //setting mincost
+	t[1][1]=1;                                              //minimum cost edge
+	t[1][2]=2;            
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=n;j++)
+		{
+			if(i!=j)
+			{
+				if(cost[i][j]!=0)
+				{
+					if(cost[i][j]<mincost)
+					{
+						k=i;
+						l=j;
+						mincost=cost[i][j];               //updating  mincost
+						t[1][1]=k;                                              //updating minimum cost edge
+						t[1][2]=l;
 					}
 				}
 			}
 		}
-	}
-	
-		//display cost of all edges in the graph
+	}	
+	printf("%d\n%d\n%d\n",mincost,t[1][1],t[1][2]);                                 //printing first resultant edge and mincost
+	/*	//display cost of all edges in the graph
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
 		{
 			printf("%d      ",cost[i][j]);
 		}
-		printf("\n");
+		printf("\n\n");
 	}
-	
+	*/
 	//setting the cost of  non existing nodes to a high value
 	for(i=1;i<=n;i++)
 	{
@@ -72,8 +100,52 @@ int main()
 		{
 			printf("%d      ",cost[i][j]);
 		}
-		printf("\n");
+		printf("\n\n");
 	}
-	printf("%d",edgecount);
+
+	
+	//setting near
+	for(i=1;i<=n;i++)
+	{
+		if(cost[i][l]<cost[i][k])
+			near[i]=l;
+		else
+			near[i]=k;
+	}
+	for(i=1;i<=n;i++)
+	{
+		printf("%d       ",near[i]);
+	}
+	/*near[k]=near[l]=0;
+	for(i=2;i<=n-1;i++)
+	{
+		//finding j such that near[j]!=0 and cost is minimum
+		for(j=1;j<=n;j++)
+		{
+			if(near[j]!=0)
+			{
+				break;
+			}
+		}
+		t[i][1]=j;
+		t[i][2]=near[j];
+		mincost+=cost[j][near[j]];
+		near[j]=0;
+		for(k=1;k<=n;k++)
+		{
+			if(near[k]!=0 && cost[k][near[k]]>cost[k][j])
+				near[k]=j;
+		}
+	}
+	//spanning tree and mincost
+	for(i=1;i<=n-1;i++)
+	{
+			for(j=1;j<=2;j++)
+			{
+				printf("%d      ",t[i][j]);
+			}
+			printf("\n \n ");
+	}
+	printf("mincost=%d      ",mincost);*/
 	return 0;
 }
