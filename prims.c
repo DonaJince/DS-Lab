@@ -26,6 +26,11 @@ int main()
 				printf("enter the cost[%d][%d]||cost[%d][%d]:",vertex[i],vertex[j],vertex[j],vertex[i]);
 				scanf("%d",&cost[i][j]);
 				cost[j][i]=cost[i][j];
+				if(cost[i][j]==0)
+					{
+					   cost[i][j]=999;
+					   cost[j][i]=999;
+					}
 			}
 		}
 	}
@@ -58,7 +63,13 @@ int main()
 	{
 		for(j=1;j<=n;j++)
 		{
+			if(cost[i][j]!=999)
+	          	{
 			printf("%d      ",cost[i][j]);
+			}
+		else
+		       printf("0	");
+		}
 		}
 		printf("\n\n");
 	}
@@ -109,7 +120,7 @@ int main()
 		{
 			if(near[j]!=0)
 			{
-				break;
+				
 			}
 		}
 		t[i][1]=j;
