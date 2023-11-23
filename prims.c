@@ -29,7 +29,11 @@ int main()
 			}
 		}
 	}
+	k=1;
+	l=2;
 	mincost=cost[1][2];               //setting mincost
+	t[1][1]=k;                                              //minimum cost edge
+	t[1][2]=l;
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
@@ -49,7 +53,7 @@ int main()
 	}
 
 	printf("%d\n%d\n%d\n",mincost,t[1][1],t[1][2]);                                 //printing first resultant edge and mincost
-	/*	//display cost of all edges in the graph
+	//display cost of all edges in the graph
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
@@ -58,7 +62,7 @@ int main()
 		}
 		printf("\n\n");
 	}
-	*/
+
 	//setting the cost of  non existing nodes to a high value
 	for(i=1;i<=n;i++)
 	{
@@ -91,10 +95,12 @@ int main()
 		else
 			near[i]=k;
 	}
+		printf("initial near :");
 	for(i=1;i<=n;i++)
 	{
 		printf("%d       ",near[i]);
 	}
+	printf("\n");
 	near[k]=near[l]=0;
 	for(i=2;i<=n-1;i++)
 	{
@@ -117,6 +123,7 @@ int main()
 		}
 	}
 	//spanning tree and mincost
+	printf("result:\n");
 	for(i=1;i<=n-1;i++)
 	{
 			for(j=1;j<=2;j++)
@@ -125,6 +132,6 @@ int main()
 			}
 			printf("\n \n ");
 	}
-	printf("mincost=%d      ",mincost);
+	printf("mincost=%d      ",mincost);	
 	return 0;
 }
