@@ -52,8 +52,8 @@ int main()
 		}
 	}
 
-	printf("%d\n%d\n%d\n",mincost,t[1][1],t[1][2]);                                 //printing first resultant edge and mincost
 	//display cost of all edges in the graph
+	printf("cost matrix:\n");
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
@@ -76,7 +76,7 @@ int main()
 			
 		}
 	}
-	//display cost matrix after setting the non exiting edgecost  to high value
+/*	//display cost matrix after setting the non exiting edgecost  to high value
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
@@ -84,7 +84,7 @@ int main()
 			printf("%d      ",cost[i][j]);
 		}
 		printf("\n\n");
-	}
+	}*/
 
 	
 	//setting near
@@ -130,7 +130,7 @@ int main()
 			{
 				printf("%d      ",t[i][j]);
 			}
-			printf("\n \n ");
+			printf("\n\n ");
 	}
 	printf("mincost=%d      ",mincost);	
 	return 0;
