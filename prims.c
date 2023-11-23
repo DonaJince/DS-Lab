@@ -29,13 +29,14 @@ int main()
 			}
 		}
 	}
+	mincost=cost[1][2];               //setting mincost
 	for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
 		{
-				if(cost[i][j]!=0)                                  //ERROR
+				if(cost[i][j]!=0)                                
 				{
-					if(cost[i][j]<=mincost)
+					if(cost[i][j]<mincost)
 					{
 						k=i;
 						l=j;
@@ -46,29 +47,7 @@ int main()
 				}
 		}
 	}
-	mincost=cost[1][2];   //setting mincost
-	t[1][1]=1;                                              //minimum cost edge
-	t[1][2]=2;            
-	for(i=1;i<=n;i++)
-	{
-		for(j=1;j<=n;j++)
-		{
-			if(i!=j)
-			{
-				if(cost[i][j]!=0)
-				{
-					if(cost[i][j]<mincost)
-					{
-						k=i;
-						l=j;
-						mincost=cost[i][j];               //updating  mincost
-						t[1][1]=k;                                              //updating minimum cost edge
-						t[1][2]=l;
-					}
-				}
-			}
-		}
-	}	
+
 	printf("%d\n%d\n%d\n",mincost,t[1][1],t[1][2]);                                 //printing first resultant edge and mincost
 	/*	//display cost of all edges in the graph
 	for(i=1;i<=n;i++)
@@ -116,7 +95,7 @@ int main()
 	{
 		printf("%d       ",near[i]);
 	}
-	/*near[k]=near[l]=0;
+	near[k]=near[l]=0;
 	for(i=2;i<=n-1;i++)
 	{
 		//finding j such that near[j]!=0 and cost is minimum
@@ -146,6 +125,6 @@ int main()
 			}
 			printf("\n \n ");
 	}
-	printf("mincost=%d      ",mincost);*/
+	printf("mincost=%d      ",mincost);
 	return 0;
 }
