@@ -122,7 +122,6 @@ int main()
 			{
 			     min=cost[j][near[j]];
 			     p=j;
-			     q=near[j];
 			     c++;
 			}
 			else if(near[j]!=0 &&c>1)
@@ -131,14 +130,13 @@ int main()
 				{
 					min=cost[j][near[j]];
 					p=j;
-					q=near[j];
 				}
 			}
 
 		}
 		t[i][1]=p;
-		t[i][2]=q;
-		mincost+=cost[p][q];
+		t[i][2]=near[p];
+		mincost+=cost[p][near[p]];
 		near[p]=0;
 		for(k=1;k<=n;k++)
 		{
