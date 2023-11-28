@@ -1,21 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
-int vertex[20],cost[20][20],n,t[20][20],mincost=0,near[10],min;
+int  cost[20][20],n,t[20][20],mincost=0,near[10],min;
 int main()
 {
-	int i,j,b,k=0,l=0,c=1,p,q;
+	int i,j,b,k=0,l=0,c,p,q;
 
 	//count of vertices
 	printf("enter the number of vertices:");
 	scanf("%d",&n);
 
 	//vertices in the graph
-	printf("\n Enter vertices  \n\n");
-	for(i=1;i<=n;i++)
-	{
-		printf("vertex[%d] :: ",i);
-		scanf("%d",&vertex[i]);
-	}
+	
 	//cost of all edges in the graph
 	for(i=1;i<=n;i++)
 	{
@@ -23,7 +18,7 @@ int main()
 		{
 			if(i!=j)
 			{
-				printf("enter the cost[%d][%d]||cost[%d][%d]:",vertex[i],vertex[j],vertex[j],vertex[i]);
+				printf("enter the cost[%d][%d]||cost[%d][%d]:",i,j,j,i);
 				scanf("%d",&cost[i][j]);
 				cost[j][i]=cost[i][j];
 				if(cost[i][j]==0)
@@ -127,6 +122,6 @@ int main()
 			}
 			printf("\n\n");
 	}
-	printf("mincost=%d      ",mincost);
+	printf("mincost=%d      \n",mincost);
 	return 0;
 }
