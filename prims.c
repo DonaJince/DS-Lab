@@ -1,14 +1,14 @@
 #include<stdio.h>
 #include<stdlib.h>
-int vertex[20],cost[20][20],n,t[20][20],mincost=0,near[10],min[20][20];
+int vertex[20],cost[20][20],n,t[20][20],mincost=0,near[10],min;
 int main()
 {
-	int i,j,b,k=0,l=0;
-	
+	int i,j,b,k=0,l=0,c=1,p,q;
+
 	//count of vertices
 	printf("enter the number of vertices:");
 	scanf("%d",&n);
-	
+
 	//vertices in the graph
 	printf("\n Enter vertices  \n\n");
 	for(i=1;i<=n;i++)
@@ -43,7 +43,7 @@ int main()
 	{
 		for(j=1;j<=n;j++)
 		{
-				if(cost[i][j]!=0)                                
+				if(cost[i][j]!=0)
 				{
 					if(cost[i][j]<mincost)
 					{
@@ -64,40 +64,12 @@ int main()
 		for(j=1;j<=n;j++)
 		{
 			if(cost[i][j]!=999)
-	          	{
-			printf("%d      ",cost[i][j]);
-			}
-		else
-		       printf("0	");
-		}
-		}
+				printf("%d      ",cost[i][j]);
+			else
+		      		printf("0	");
+		}	
 		printf("\n\n");
 	}
-
-	//setting the cost of  non existing nodes to a high value
-	for(i=1;i<=n;i++)
-	{
-		for(j=i;j<=n;j++)
-		{
-			if(cost[i][j]==0&& cost[j][i]==0)
-			{
-			cost[i][j]=999;
-			cost[j][i]=999;
-			}
-			
-		}
-	}
-/*	//display cost matrix after setting the non exiting edgecost  to high value
-	for(i=1;i<=n;i++)
-	{
-		for(j=1;j<=n;j++)
-		{
-			printf("%d      ",cost[i][j]);
-		}
-		printf("\n\n");
-	}*/
-
-	
 	//setting near
 	for(i=1;i<=n;i++)
 	{
@@ -115,22 +87,34 @@ int main()
 	near[k]=near[l]=0;
 	for(i=2;i<=n-1;i++)
 	{
+	c=1;
 		//finding j such that near[j]!=0 and cost is minimum
 		for(j=1;j<=n;j++)
 		{
-			if(near[j]!=0)
+			if(near[j]!=0 && c==1)
 			{
-				
+			     min=cost[j][near[j]];
+			     p=j;
+			     c++;
 			}
+			else if(near[j]!=0 &&c>1)
+			{
+				if(cost[j][near[j]]<min)
+				{
+					min=cost[j][near[j]];
+					p=j;
+				}
+			}
+
 		}
-		t[i][1]=j;
-		t[i][2]=near[j];
-		mincost+=cost[j][near[j]];
-		near[j]=0;
+		t[i][1]=p;
+		t[i][2]=near[p];
+		mincost+=cost[p][near[p]];
+		near[p]=0;
 		for(k=1;k<=n;k++)
 		{
-			if(near[k]!=0 && cost[k][near[k]]>cost[k][j])
-				near[k]=j;
+			if(near[k]!=0 && cost[k][near[k]]>cost[k][p])
+				near[k]=p;
 		}
 	}
 	//spanning tree and mincost
@@ -143,6 +127,6 @@ int main()
 			}
 			printf("\n\n ");
 	}
-	printf("mincost=%d      ",mincost);	
+	printf("mincost=%d      ",mincost);
 	return 0;
 }
