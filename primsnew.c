@@ -64,9 +64,9 @@ int main()
 		for(j=1;j<=n;j++)
 		{
 			if(cost[i][j]!=999)
-				printf("%d      ",cost[i][j]);
+				printf("%d     ",cost[i][j]);
 			else
-		      		printf("0	");
+		      		printf("0     ");
 		}	
 		printf("\n\n");
 	}
@@ -125,7 +125,7 @@ int main()
 			{
 				printf("%d      ",t[i][j]);
 			}
-			printf("\n\n ");
+			printf("\n\n");
 	}
 	printf("mincost=%d      ",mincost);
 	return 0;
