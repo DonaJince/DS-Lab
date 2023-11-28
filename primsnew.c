@@ -64,39 +64,12 @@ int main()
 		for(j=1;j<=n;j++)
 		{
 			if(cost[i][j]!=999)
-			{
-			printf("%d      ",cost[i][j]);
-			}
-		else
-		       printf("0	");
-		}
+				printf("%d      ",cost[i][j]);
+			else
+		      		printf("0	");
+		}	
 		printf("\n\n");
 	}
-
-	//setting the cost of  non existing nodes to a high value
-	for(i=1;i<=n;i++)
-	{
-		for(j=i;j<=n;j++)
-		{
-			if(cost[i][j]==0&& cost[j][i]==0)
-			{
-			cost[i][j]=999;
-			cost[j][i]=999;
-			}
-
-		}
-	}
-/*	//display cost matrix after setting the non exiting edgecost  to high value
-	for(i=1;i<=n;i++)
-	{
-		for(j=1;j<=n;j++)
-		{
-			printf("%d      ",cost[i][j]);
-		}
-		printf("\n\n");
-	}*/
-
-
 	//setting near
 	for(i=1;i<=n;i++)
 	{
@@ -114,7 +87,7 @@ int main()
 	near[k]=near[l]=0;
 	for(i=2;i<=n-1;i++)
 	{
-
+	c=1;
 		//finding j such that near[j]!=0 and cost is minimum
 		for(j=1;j<=n;j++)
 		{
