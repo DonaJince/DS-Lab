@@ -1,10 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
-int s[10],visited[10],i,j,n,edge[10][10],top=1,v;
+int s[10],visited[10],i,j,n,edge[10][10],top=0,v,item;
 void push(int v)
 {
-	s[top]=v;
 	top++;
+	s[top]=v;
 }
 int pop()
 {
@@ -33,15 +33,30 @@ int main()
 			 	edge[j][i]=edge[i][j]=0;
 		}
 	}
-	//printf("\nselect a starting vertex from 1 to  %d:",n);
-	for(i=1;i<=n;i++)
+	/*for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
 		{
-			if(edge[i][j]==1)
+		printf("%d    ",edge[i][j]);
+		}
+	printf("\n");
+	}*/
+	//printf("\nselect a starting vertex from 1 to  %d:",n);
+	push(1);
+	for(i=1;i<=n;i++)
+	{
+		item=pop();
+		visited[item]=i;
+		for(j=1;j<=n;j++)
+		{
+			if(edge[i][j]==1 && visited[j]==0)
 			{
 				push(j);
 			}
 		}
 	}
+	printf("\n");
+	for(i=1;i<=n;i++)
+	 printf("%d\n",visited[i]);
+return 0;
 }
