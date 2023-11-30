@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-int s[10],visited[10],i,j,n,adj[10][10],top=0,v,item;
+int s[10],visited[10],i,j,n,adj[10][10],top=0,v,k,item;
 void push(int v)
 {
 	top++;
@@ -9,7 +9,7 @@ void push(int v)
 int pop()
 {
 	v= s[top];
-	top++;
+	top--;
 	return v;
 }
 int main()
@@ -42,7 +42,13 @@ int main()
 				push(j);
 			}
 		}	
+	
+	/*for(k=1;k<=top;k++)
+	{
+	printf("%d-->",s[k]);
 	}
-	printf("\n");
+	printf("\n");*/
+	}
+	
 return 0;
 }
