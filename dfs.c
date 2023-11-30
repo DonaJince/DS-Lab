@@ -18,45 +18,30 @@ int main()
 	scanf("%d",&n);
 	for(i=1;i<=n;i++)
 		 visited[i]=0;
-	printf("\nif edge is present assign 1 ,otherwise 0!\n");
+	printf("\nienter the adjacency matrix!\n");
 	for(i=1;i<=n;i++)
-	{
-		for(j=i+1;j<=n;j++)
-		{
-			if(i!=j)
-			{
-				printf("is edge (%d,%d)||edge(%d,%d) exist or not???:",i,j,j,i);
-				scanf("%d",&edge[i][j]);
-				edge[j][i]=edge[i][j];
-			}
-			else
-			 	edge[j][i]=edge[i][j]=0;
-		}
-	}
-	/*for(i=1;i<=n;i++)
 	{
 		for(j=1;j<=n;j++)
 		{
-		printf("%d    ",edge[i][j]);
+				scanf("%d",&edge[i][j]);
 		}
-	printf("\n");
-	}*/
+	}
+	printf("spanning tree edges are:\n");
 	//printf("\nselect a starting vertex from 1 to  %d:",n);
 	insert(1);
 	for(i=1;i<=n;i++)
 	{
 		item=delete();
-		visited[item]=i;
+		visited[item]=1;
 		for(j=1;j<=n;j++)
 		{
 			if(edge[i][j]==1 && visited[j]==0)
 			{
 				insert(j);
+				printf("edge(%d,%d)\n",i,item);
 			}
 		}
 	}
 	printf("\n");
-	for(i=1;i<=n;i++)
-	 printf("%d\n",visited[i]);
 return 0;
 }
