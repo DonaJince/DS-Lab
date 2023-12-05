@@ -8,10 +8,10 @@ f=0;
 		{
 			if(adj[c][v]==0)
 			{
-				f=1;
+				f++;
 			}
 		}
-		if(f==1)
+		if(f==v)
 			return 1;
 		else
 			return 0;
@@ -30,7 +30,7 @@ int main()
 	}
 	for(i=1;i<=n;i++)
 		 visited[i]=i;
-	printf("\ntopological visiteding of above graph is :\n\n");
+	printf("\ntopological ordering of above graph is :\n\n");
 	for(i=1;i<=n;i++)
 	{
 		in=indegree(i);
