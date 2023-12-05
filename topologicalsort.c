@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-int n,adj[10][10],i,j,c,f,in,order[10];
+int n,adj[10][10],i,j,c,f,in,visited[10];
 int indegree(int v)
 {
 f=0;
@@ -29,15 +29,15 @@ int main()
 		}
 	}
 	for(i=1;i<=n;i++)
-		 order[i]=i;
-	printf("\ntopological ordering of above graph is :\n\n");
+		 visited[i]=i;
+	printf("\ntopological visiteding of above graph is :\n\n");
 	for(i=1;i<=n;i++)
 	{
 		in=indegree(i);
-		if(in==1 && order[i]!=0)
+		if(in==1 && visited[i]!=0)
 		{
 			printf("%d-->",i);
-			order[i]=0;
+			visited[i]=0;
 			for(j=1;j<=n;j++)
 			{
 				adj[i][j]=0;
