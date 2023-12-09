@@ -32,13 +32,14 @@ int main()
  for(i=1;i<=n;i++)
    visited[i]=i;
  printf("\ntopological ordering of above graph is :\n\n");
- for(i=1;i<=n;i++)
+ i=1;
+ while(i<=n)
  {
   in=indegree(i);
   if(in==1 && visited[i]!=-1)
   {
    printf("%d-->",i);
-     temp--;
+   temp--;
    visited[i]=-1;
    for(j=1;j<=n;j++)
    {
@@ -46,7 +47,9 @@ int main()
     adj[j][i]=-1;
    }
    i=1;
+   continue;
   }
+  i++;
  }
 return 0;
 }
