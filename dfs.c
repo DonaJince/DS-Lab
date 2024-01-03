@@ -34,7 +34,7 @@ int main()
 		item=pop();
 		printf("%d-->",item);
 		visited[item]=1;
-		for(j=i+1;j<=n;j++)
+		for(j=1;j<=n;j++)
 		{
 			if(adj[item][j]==1 && visited[j]==0)
 			{
