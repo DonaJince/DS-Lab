@@ -40,6 +40,7 @@ int main()
 			{
 				visited[j]=1;
 				push(j);
+				break;
 			}
 		}	
 	
