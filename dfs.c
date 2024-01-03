@@ -38,7 +38,6 @@ int main()
 		{
 			if(adj[item][j]==1 && visited[j]==0)
 			{
-				visited[j]=1;
 				push(j);
 				break;
 			}
