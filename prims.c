@@ -14,10 +14,10 @@ int main()
 	//cost of all edges in the graph
 	for(i=1;i<=n;i++)
 	{
+
+		cost[i][i]=999;
 		for(j=i+1;j<=n;j++)
 		{
-			if(i!=j)
-			{
 				printf("enter the cost[%d][%d]||cost[%d][%d]:",i,j,j,i);
 				scanf("%d",&cost[i][j]);
 				cost[j][i]=cost[i][j];
@@ -26,7 +26,6 @@ int main()
 					   cost[i][j]=999;
 					   cost[j][i]=999;
 					}
-			}
 		}
 	}
 	k=1;
@@ -38,8 +37,6 @@ int main()
 	{
 		for(j=1;j<=n;j++)
 		{
-				if(cost[i][j]!=0)
-				{
 					if(cost[i][j]<mincost)
 					{
 						k=i;
@@ -48,7 +45,6 @@ int main()
 						t[1][1]=k;                                              //minimum cost edge
 						t[1][2]=l;
 					}
-				}
 		}
 	}
 
@@ -92,7 +88,7 @@ int main()
 			     p=j;
 			     c++;
 			}
-			else if(near[j]!=0 &&c>1)
+			if(near[j]!=0 &&c>1)
 			{
 				if(cost[j][near[j]]<min)
 				{

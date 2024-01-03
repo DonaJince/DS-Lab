@@ -27,10 +27,9 @@ int main(){
 	//Get edge weight matrix from user	
 	for(i=1;i<=v;i++)
 	{
+		cost[i][i]=999;
 		for(j=i+1;j<=v;j++)
 		{
-			if(i!=j)
-			{
 				printf("enter the cost[%d][%d]||cost[%d][%d]:",i,j,j,i);
 				scanf("%d",&cost[i][j]);
 				cost[j][i]=cost[i][j];
@@ -39,7 +38,6 @@ int main(){
 					   cost[i][j]=999;
 					   cost[j][i]=999;
 					}
-			}
 		}
 	}
 	
