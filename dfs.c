@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-int s[10],visited[10],i,j,n,adj[10][10],top=0,v,k,item;
+int s[10],visited[10],i,f,j,n,adj[10][10],top=0,v,k,item;
 void push(int v)
 {
 	top++;
@@ -29,25 +29,26 @@ int main()
 	printf("spanning tree edges are:\n");
 	//printf("\nselect a starting vertex from 1 to  %d:",n);
 	push(1);
-	for(i=1;i<=n;i++)
+	i=1;
+	while(top!=0 && i<n)
 	{
-		item=pop();
-		printf("%d-->",item);
+		f=0;
+		item=s[top];
 		visited[item]=1;
 		for(j=1;j<=n;j++)
 		{
 			if(adj[item][j]==1 && visited[j]==0)
 			{
+				printf("%d-->%d",item,j);
 				push(j);
+				f=1;
 				break;
 			}
 		}	
-	
-	/*for(k=1;k<=top;k++)
-	{
-	printf("%d-->",s[k]);
-	}
-	printf("\n");*/
+	if(f==0)
+	k=pop();
+	else
+	i++;
 	}
 	
 return 0;
