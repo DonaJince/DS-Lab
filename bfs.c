@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 int q[10],visited[10],i,j,n,adj[10][10],front=1,rear=0,v,item;
@@ -6,7 +7,7 @@ void insert(int v)
 	rear++;
 	q[rear]=v;
 }
-int get()
+int delet()
 {
 	v= q[front];
 	front++;
@@ -29,9 +30,10 @@ int main()
 	printf("spanning tree edges are:\n");
 	//printf("\nselect a starting vertex from 1 to  %d:",n);
 	insert(1);
-	for(i=1;i<=n;i++)
+	i=1;
+	while(front<=rear && i<n)
 	{
-		item=get();
+		item=delet();
 		visited[item]=1;
 		for(j=i+1;j<=n;j++)
 		{
@@ -42,6 +44,7 @@ int main()
 				printf("edge(%d,%d)\n",item,j);
 			}
 		}
+		i++;
 	}
 	printf("\n");
 return 0;
