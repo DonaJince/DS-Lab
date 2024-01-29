@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define MAX 10
+#define MAX 10;
 int parent[MAX];
 int v,i,j,cost[MAX][MAX],edgecount,count=1,mincost,c,rno,cno,v1,v2;
 int find(int i)
@@ -70,5 +70,4 @@ int main(){
 	printf("\n Minimum cost=%d",mincost);  
 	return 0;
 } 
-					  				  
-
+					  
